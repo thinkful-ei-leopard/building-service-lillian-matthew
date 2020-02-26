@@ -12,7 +12,7 @@ describe('Shopping list service object', () => {
     {
       id: 1,
       name: 'item 1',
-      price: 4.20,
+      price: '4.02',
       date_added: new Date('2019-01-01'),
       checked: false,
       category:'Main'
@@ -20,7 +20,7 @@ describe('Shopping list service object', () => {
     {
       id: 2,
       name: 'item 2',
-      price: 4.20,
+      price: '4.02',
       date_added: new Date('2019-01-01'),
       checked: false,
       category:'Snack'
@@ -28,7 +28,7 @@ describe('Shopping list service object', () => {
     {
       id: 3,
       name: 'item 3',
-      price: 4.20,
+      price: '4.02',
       date_added: new Date('2019-01-01'),
       checked: true,
       category:'Lunch'
@@ -50,15 +50,40 @@ describe('Shopping list service object', () => {
   describe('getAllItems()', () => {
     
     // eslint-disable-next-line quotes
-    it(`returns empty`, () => {
+    it('returns empty', () => {
       return ShoppingService.getAllItems(db)
         .then(actual => {
           expect(actual).to.eql([]);
         });
     });
 
+    context('with data', () => {
+      beforeEach('insert test articles', () => {
+        return db('shopping_list')
+          .insert(testItems);
+      });
 
+      it('return all test items', () => {
+        return ShoppingService.getAllItems(db)
+          .then(items => expect(items).to.eql(testItems));
+      });
+    });
 
   });
 
+  describe('getById()', () => {
+
+    it('returns empty', () => {
+      return ShoppingService.getById(db, 12345)
+        .then(actual => {
+          expect(actual).to.be.undefined;
+        });
+    });
+  });
+
+  //describe('insertItem()', () => {});
+
+  //describe('deleteItem()', () => {});
+
+  //describe('updateItem()', () => {});
 });
