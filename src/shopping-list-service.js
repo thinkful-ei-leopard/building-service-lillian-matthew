@@ -22,8 +22,16 @@ const ShoppingService = {
         return rows[0];
       });
   },
-  deleteItem(knex, id){},
-  updateItem(knex, id, newItemFields){}
+  deleteItem(knex, id){
+    return knex('shopping_list')
+      .where({ id })
+      .delete();
+  },
+  updateItem(knex, id, newItemFields){
+    return knex('shopping_list')
+      .where({ id })
+      .update(newItemFields);
+  }
 };
 
 module.exports = ShoppingService;
