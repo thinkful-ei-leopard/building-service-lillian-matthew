@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha",
-    "start": "node src/drills.js",
+    "start": "node src/blogful.js",
     "dev": "nodemon src/server.js",
     "predeploy": "npm audit",
     "deploy": "git push heroku master"
@@ -14,13 +14,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.2.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "expres": "0.0.5",
     "helmet": "^3.21.2",
     "knex": "^0.20.10",
+    "mocha": "^7.1.0",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.2",
-    "pg": "^7.18.2"
+    "pg": "^7.18.2",
+    "supertest": "^4.0.2"
   }
 }
