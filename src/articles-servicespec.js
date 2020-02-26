@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 const { expect } = require('chai');
-const ArticlesService = require('../src/articles-service.js');
+const ArticlesService = require('./articles-service.js');
 const knex = require('knex');
 
 describe('Article service object', function() {
